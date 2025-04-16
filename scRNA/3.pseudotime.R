@@ -19,6 +19,9 @@ for (state in unique(merged_object$sample)) {
 }
 
 # -------------------gene expression alteration-------------------------
+merged_object = RunDynamicFeatures(srt = merged_object, 
+                                   lineages = paste0("Lineage", 1:lineage_num), 
+                                   n_candidates = 200)
 # naive2IgD-
 ht_m <- DynamicHeatmap(
   srt = merged_object, lineages = c("Lineage1"),
@@ -76,12 +79,12 @@ target = names(ht_m$feature_split)
 
 ht_plasma = list()
 for (state in unique(merged_object$sample)) {
-  # sample.list[[state]] = subset(merged_object, subset = state == sample)
-  # sample.list[[state]] <- RunSlingshot(srt = sample.list[[state]], group.by = "celltype",
-  #                                      reduction = "UMAP", start = "naive")
-  # sample.list[[state]] <- RunDynamicFeatures(
-  #   srt = sample.list[[state]], lineages = c("Lineage1", "Lineage2"),
-  #   n_candidates = length(target), minfreq = 0, features = target)
+  sample.list[[state]] = subset(merged_object, subset = state == sample)
+  sample.list[[state]] <- RunSlingshot(srt = sample.list[[state]], group.by = "celltype",
+                                       reduction = "UMAP", start = "naive")
+  sample.list[[state]] <- RunDynamicFeatures(
+    srt = sample.list[[state]], lineages = c("Lineage1", "Lineage2"),
+    n_candidates = length(target), minfreq = 0, features = target)
   lineage = ifelse(
     sample.list[[state]]@tools[["Slingshot_celltype_umap"]]@metadata[["lineages"]][["Lineage1"]][3] == "IgD-",
     c("Lineage2"), c("Lineage1")

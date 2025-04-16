@@ -1,8 +1,55 @@
 library(Seurat)
 library(tidyverse)
 library(qqman)
+library(data.table)
+library(ggsci)
+library(ggrepel)
+library(ggpubr)
+library(RcolorBrewer)
 
 setwd("~/data_HD/Project/TS/10XData/Figure1/")
+
+my_theme =   theme_classic(base_line_size = 1)+
+  theme(plot.title = element_text(size = 20,
+                                  colour = "black",
+                                  hjust = 0.5),
+        axis.title.y = element_text(size = 15, 
+                                    color = "black",
+                                    face = "bold", 
+                                    vjust = 1.9, 
+                                    hjust = 0.5, 
+                                    angle = 90),
+        axis.title.x = element_text(size = 15, 
+                                    color = "black",
+                                    face = "bold", 
+                                    vjust = 1.9, 
+                                    hjust = 0.5, 
+                                    angle = 90),
+        legend.title = element_text(color="black", # 修改图例的标题
+                                    size=15, 
+                                    face="bold"),
+        legend.text = element_text(color="black", # 设置图例标签文字
+                                   size = 10, 
+                                   face = "bold"),
+        axis.text.x = element_text(size = 13, # 修改X轴上字体大小，
+                                   color = "black",
+                                   face = "bold",
+                                   vjust = 0.5,
+                                   hjust = 0.5,
+                                   angle = 0),
+        axis.text.y = element_text(size = 13, # 修改y轴上字体大小，
+                                   color = "black",
+                                   face = "bold", 
+                                   vjust = 0.5,
+                                   hjust = 0.5,
+                                   angle = 0)
+        #  face取值：plain普通，bold加粗，italic斜体bold.italic斜体加粗
+  )
+
+color_ct=c(brewer.pal(12, "Set3")[-c(2,3,9,12)],"#b3b3b3",
+           brewer.pal(5, "Set1")[2],
+           brewer.pal(3, "Dark2")[1],
+           "#fc4e2a","#fb9a99","#f781bf","#e7298a")
 
 merged_object = read_rds("combinedReannotation.rds")
 
