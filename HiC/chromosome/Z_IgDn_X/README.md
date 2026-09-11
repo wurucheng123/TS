@@ -1,0 +1,2 @@
+java -jar ../../raw_data/juicer_tools.2.20.00.jar dump observed KR /data/data/Turner/HiCData/ZWJFamilyHiCAfterMapping/outPut/step04_hicpro2juicebox/hicfiles/Z-IgD-.allValidPairs.hic X X BP 500000 concat.txt
+java -jar ../../raw_data/3DMax.jar parameters.txt

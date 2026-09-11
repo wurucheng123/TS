@@ -1,0 +1,7 @@
+Input file: concat.txt
+Convert factor: 1.0999999999999999
+Learning rate: 1.0
+AVG RMSE: 456.8478669313868
+AVG Spearman correlation IFs vs. Reconstructed Dist: -0.6520359729691779
+AVG Spearman correlation WishDist vs. Reconstructed Dist: 0.6520359729691779
+AVG Pearson correlation WishDist vs. Reconstructed Dist: 0.6213780064170442

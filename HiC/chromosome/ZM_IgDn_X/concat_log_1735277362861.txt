@@ -1,0 +1,7 @@
+Input file: concat.txt
+Convert factor: 0.6
+Learning rate: 1.0
+RMSE: 132.73243370158545
+Spearman correlation IFs vs. Reconstructed Dist: -0.9347237326015128
+Spearman correlation WishDist vs. Reconstructed Dist: 0.9347237326015128
+Pearson correlation WishDist vs. Reconstructed Dist: 0.9255003692625018
